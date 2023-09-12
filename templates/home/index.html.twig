@@ -6,7 +6,31 @@
 {% endblock %}
 
 {% block body %}
+	<style>
+		.task-icon {
+			display: inline-block;
+			width: 24px;
+			height: 24px;
+			border-radius: 50%;
+			background-color: red;
+		}
+
+		.task-icon.done {
+			background-color: green;
+		}
+	</style>
+
 	<div class="container">
 		<h1>Bienvenue sur ma TODO list !</h1>
+
+		{% for task in tasks %}
+			<div>
+				{{ task.title }}
+				-
+				<div class="task-icon {% if task.done %}done{% endif %}"></div>
+			</div>
+		{% else %}
+			<div>Aucune tâche à afficher</div>
+		{% endfor %}
 	</div>
 {% endblock %}
